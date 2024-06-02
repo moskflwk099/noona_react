@@ -1,3 +1,4 @@
+import { productActions } from "../reducers/productReducer";
 
 // 기존의 비동기화 함수인 getProducts 함수를 여기 미들웨어로 옮겨보자.
 // 이 미들웨어 함수는 함수를 리턴한다.
@@ -15,7 +16,9 @@ function getProducts(searchQuery){
 
     // 이 데이터를 reducer 에 보내준다.
     // 하고싶었던 action 을 던져줄수 있다.
-    dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}});
+    // dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}});
+
+    dispatch(productActions.getAllproducts({data}))
   };
 }
 
