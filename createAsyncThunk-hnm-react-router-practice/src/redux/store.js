@@ -10,7 +10,9 @@
 // rootReducer 는 임의의 이름이다.
 //import rootReducer from "./reducers";   // ./reducers/index 붙여도 된다.
 
-import productReducer from "./reducers/productReducer";
+//import productReducer from "./reducers/productReducer";
+import productReducer from "./reducers/productSlice";  // createAsyncThunk 사용
+
 import authenticateReducer from "./reducers/authenticateReducer"; 
 
 import { configureStore } from "@reduxjs/toolkit";

@@ -18,6 +18,10 @@ function getProducts(searchQuery){
     // 하고싶었던 action 을 던져줄수 있다.
     // dispatch({type:"GET_PRODUCT_SUCCESS", payload:{data}});
 
+    // toolkit 사용으로 위에 dispatch 에서 action 을 넘겨주는 부분은 주석처리한다.
+    // productSlice.actions 의 함수명을 가져온다 (함수명이 action명이다.)
+    // type:함수명이되고, payload:응답 데이터(오브젝트)가 된다. 
+    // data 는 알아서 payload 필드 아래로 들어간다.
     dispatch(productActions.getAllproducts({data}))
   };
 }
