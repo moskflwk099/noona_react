@@ -8,7 +8,9 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 // 여러 리듀서를 하나의 파일로 묶어 주는 combineReducers 사용. (위 코드 필요 없음)
 // rootReducer 는 임의의 이름이다.
+// * reducer 와 store 는 처음부터 연결되어 있다. (항상 연결 상태)
 import rootReducer from "./reducers";   // ./reducers/index 붙여도 된다.
+
 let store = createStore(
   rootReducer, 
   composeWithDevTools(applyMiddleware(thunk))

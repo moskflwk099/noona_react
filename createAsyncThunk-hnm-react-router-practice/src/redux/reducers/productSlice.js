@@ -45,12 +45,14 @@ let initialState={
 
 
 
-
+// reducer 와 action 을 분리하지 말고 slice 라는 파일에 합쳐서 관리해라
 // createAsyncThunk 사용하면 action, store 분리할 필요없이 하나로 합칠수 있다. 
 // createAsyncThunk 두개의 파라미터 필요 (String 타입 action, promise 타입 콜백함수)
 // 콜백함수는 두개의 파라미터를 받는다.(arg:조회시 필요한값들, thunkAPI:API 호출시 필요함 값들 제공)
 // thunkAPI 의 사용은 옵션이다.
 // 1. action 크리에이터의 getProducts() 함수의 내용을 그대로 사용한다. 
+// * createAsyncThunk 는 promise 를 리턴해야 한다.
+//    > await 를 사용하면 promise 를 리턴 받을 수 있다. 
 export const fetchProducts = createAsyncThunk('/product/fetchAll', async(searchQuery, thunkAPI)=>{
 
   try {
@@ -83,6 +85,7 @@ const productSlice = createSlice({
   // extraReducers 는 외부 라이브러리에 의해서 호출되는 케이스, 그러니깐 extra 한 내용들을 정의한다.
   // 위 reducers:{} 는 getAllproducts() 을 직접 호출하기 때문에 reducers 에 정의되었다 ==> dispatch(productActions.getAllproducts({data})) 
   // 이제는 createAsyncThunk 를 이용하면 직접적으로 호출하지 않아도 알아서 상황에 맞춰서 reducer 를 호출하는 함수를 만들고있다. 
+  // ** fetchProducts 함수는 promise 를 리턴을 하기만 하면 이 promise 의 상태에 따라서 알아서 케이스를 나눠서 처리한다.
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading=true;

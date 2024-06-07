@@ -17,10 +17,11 @@ function reducer(state=initialState, action) {
   //   // App.js 에서 useDispatch 로 Action 을 던질 때 payload 에 객체로 num 을 넘겼다. (5씩 증가)
   //   return {...state,count:state.count + action.payload.num} 
   // } else {
-  //   return state;
+  //   return { ...state };
   // }
 
   // 여기서 일종의 행동 지침을 만든다.
+  // 이 reducer 가 store 를 바꾸는 역활을 한다. (return 하면 store 가 자동으로 바뀐다.)
   switch (action.type) {
     case "INCREMENT":
       // store 에게 자동 전달 되기 때문에 항상 return 을 해주어야 한다. 
@@ -34,7 +35,7 @@ function reducer(state=initialState, action) {
     case "LOGIN":
       return {...state, id:action.payload.id, password:action.payload.password};
     default:
-      return state;
+      return { ...state };
   }
 
 }

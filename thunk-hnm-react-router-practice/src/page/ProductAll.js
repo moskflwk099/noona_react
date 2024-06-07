@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ProductAll = () => {
   //const [productList, setProductList] = useState([]);
+  // state.product.productList 의 product 는 컴바인한 reducer 의 이름이다.(react-redux/index.js)
   const productList = useSelector((state)=>state.product.productList);
 
 

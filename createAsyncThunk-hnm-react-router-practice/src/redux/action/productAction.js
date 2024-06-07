@@ -35,3 +35,7 @@
 // 객체에 담아주는 이유는 수출할 함수가 여러개이기 때문이다. 
 // productAction 은 위 미들웨어 함수를 담고 있는 객체다.
 //export const productAction={ getProducts };
+
+// !!!!! createAsyncThunk 을 사용하면 Action 과 Reducer 를 굳이 분리할 필요가 없다!
+// !!!!! 그래서 합쳐서 slice 라는 이름 아래 관리를 한다. 
+
